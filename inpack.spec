@@ -1,13 +1,13 @@
 [project]
 name = java-jre
 version = 1.8.0.151
+release = 4
 vendor = oracle.com
 homepage = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 groups = dev/sys-runtime
 description = Java SE Development Kit
 
 %build
-PREFIX="{{.project__prefix}}"
 
 cd {{.inpack__pack_dir}}/deps
 
@@ -29,6 +29,7 @@ cp -rp README  {{.buildroot}}/
 cp -rp release  {{.buildroot}}/
 cp -rp THIRDPARTYLICENSEREADME-JAVAFX.txt  {{.buildroot}}/
 cp -rp THIRDPARTYLICENSEREADME.txt  {{.buildroot}}/
+install -m 775 {{.inpack__pack_dir}}/misc/inner-init.sh {{.buildroot}}/inner-init.sh
 cp -rp {{.inpack__pack_dir}}/misc/profile.d_java.sh  {{.buildroot}}/misc/profile.d_java.sh
 
 cd {{.inpack__pack_dir}}/deps
