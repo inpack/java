@@ -1,0 +1,39 @@
+kind = "AppSpec"
+roles = [101, 100]
+type_tags = ["runtime"]
+
+[meta]
+  name = "java-jre18"
+  version = "1.0"
+  subtitle = "Java JRE 1.8 运行环境"
+
+[[packages]]
+  name = "java-jre"
+  version = "1.8.0"
+
+[[executors]]
+  name = "java-jre-main"
+  updated = 0
+  exec_start = """
+{{.inpack_prefix_java_jre}}/inner-init.sh
+"""
+  priority = 8
+
+  [executors.plan]
+    on_boot = true
+
+[exp_res]
+  cpu_min = 10
+  mem_min = 1024
+  vol_min = 5
+
+[exp_deploy]
+  rep_min = 1
+  rep_max = 128
+  sys_state = 1
+  network_mode = 1
+
+[[urls]]
+  name = "gdoc"
+  url = "https://www.sysinner.cn/gdoc/view/app-guide/java/jre-v18.md"
+
